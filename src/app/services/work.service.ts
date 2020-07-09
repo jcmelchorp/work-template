@@ -8,21 +8,37 @@ import { catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class WorkService {
-  private SERVER_URL = 'http://localhost:3000/'
+  private SERVER_URL = 'http://localhost:3000'
   constructor(private httpClient: HttpClient) { }
 
   getWorks(): Observable<Work[]> {
-    return this.httpClient.get<Work[]>(this.SERVER_URL + 'works').pipe(
+    const url = `${this.SERVER_URL}/works`;
+    return this.httpClient.get<Work[]>(url).pipe(
       catchError(this.handleError));
   }
 
-  addWork(work: Work) {
+  addWork(work: Work): Observable<Work> {
     const httpHeaders = new HttpHeaders()
       .set('Content-Type', 'application/json');
     const options = {
       headers: httpHeaders
     };
-    return this.httpClient.post<Work>(this.SERVER_URL, work, options);
+    const url = `${this.SERVER_URL}/works`;
+    return this.httpClient.post<Work>(url, work, options).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  deleteWork(key: string): Observable<{}> {
+    const url = `${this.SERVER_URL}/works/${key}`;
+    const httpHeaders = new HttpHeaders()
+      .set('Content-Type', 'application/json');
+    const options = {
+      headers: httpHeaders
+    };
+    return this.httpClient.delete(url, options).pipe(
+      catchError(this.handleError)
+    );
   }
 
   private handleError(error: HttpErrorResponse): Observable<never> {

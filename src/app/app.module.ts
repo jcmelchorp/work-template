@@ -8,7 +8,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { WorksComponent } from './components/works/works.component';
-import { NewWorkComponent } from './components/new-work/new-work.component';
+import { WorkComponent } from './components/work/work.component';
 
 import { WorkService } from './services/work.service';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
@@ -17,7 +17,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
   declarations: [
     AppComponent,
     WorksComponent,
-    NewWorkComponent
+    WorkComponent
   ],
   imports: [
     BrowserModule,

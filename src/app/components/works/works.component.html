@@ -6,17 +6,26 @@
 </div>
 <div class="p-5">
   <mat-card>
-    <table mat-table [dataSource]="works" [class.mat-elevation-z8]="true">
+    <h2 *ngIf="works.length==0" class="text-cener">There are no works yet.</h2>
+    <table *ngIf="works.length!=0" mat-table [dataSource]="works" [class.mat-elevation-z8]="true">
       <!-- Position Column -->
-      <ng-container matColumnDef="key">
-        <mat-header-cell *matHeaderCellDef> Key </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.key}} </mat-cell>
+      <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef>Id </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
       </ng-container>
 
       <!-- Name Column -->
       <ng-container matColumnDef="name">
         <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef> Actions</mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <button mat-button>Edit</button>
+          <button mat-button (click)="deleteWork(element.id)">Delete</button>
+        </mat-cell>
       </ng-container>
 
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

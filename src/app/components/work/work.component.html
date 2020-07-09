@@ -1,5 +1,5 @@
 <div class="p-5">
-  <p class="display-4">New Work</p>
+  <p class="display-4">Work</p>
 </div>
 <div class="p-5">
   <mat-card>
@@ -11,9 +11,9 @@
       </mat-card-header>
       <mat-card-content>
         <mat-form-field class="d-block" appearance="outline">
-          <mat-label>key</mat-label>
-          <input matInput #key type="text" formControlName="key">
-          <mat-error class="error" *ngIf="workForm.get('key').hasError('required') && workForm.get('key').touched">
+          <mat-label>id</mat-label>
+          <input matInput #id type="text" formControlName="id">
+          <mat-error class="error" *ngIf="workForm.get('id').hasError('required') && workForm.get('id').touched">
             You must provide a key value
           </mat-error>
         </mat-form-field>

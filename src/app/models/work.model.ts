@@ -1,4 +1,4 @@
 export interface Work {
-  key: string;
+  id: number;
   name: string;
 }
