@@ -1,3 +1,8 @@
 {
-  "works": []
+  "works": [
+    {
+      "id": "4",
+      "name": "my fourth work"
+    }
+  ]
 }
