@@ -1,3 +1,4 @@
+import { WorkService } from 'src/app/services/work.service';
 import { Work } from './../../models/work.model';
 import { Routes } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
@@ -8,10 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WorksComponent implements OnInit {
   displayedColumns: string[] = ['key', 'name'];
-  dataSource: Work[];
-  constructor() { }
+  works: Work[];
+  constructor(private workService: WorkService) { }
 
   ngOnInit(): void {
+    this.workService.getWorks().subscribe((result) => {
+      this.works = result;
+    });
   }
 
 }
