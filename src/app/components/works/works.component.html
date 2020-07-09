@@ -1,0 +1,26 @@
+<div class="p-5">
+  <p class="display-4">Works</p>
+</div>
+<div class="px-5">
+  <button mat-raised-button [routerLink]="['work']">New Work</button>
+</div>
+<div class="p-5">
+  <mat-card>
+    <mat-table [dataSource]="dataSource" [class.mat-elevation-z8]="true">
+      <!-- Position Column -->
+      <ng-container matColumnDef="key">
+        <mat-header-cell *matHeaderCellDef> Key </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.key}} </mat-cell>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  </mat-card>
+</div>
