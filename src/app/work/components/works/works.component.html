@@ -1,0 +1,13 @@
+<div class="p-5">
+  <p class="display-4">Works</p>
+</div>
+<!-- <div class="px-5">
+  <button mat-raised-button [routerLink]="['work']">New Work</button>
+</div> -->
+<div class="px-5">
+  <app-work></app-work>
+</div>
+
+<div *ngIf="!(worksListLoading$ | async)" class="px-5 py-5">
+  <app-works-list></app-works-list>
+</div>

@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { Work } from 'src/app/models/work.model';
+import { Subject } from 'rxjs';
+import { Work } from '../../models/work.model';
 
 @Component({
   selector: 'app-work-confirm',
@@ -8,7 +9,7 @@ import { Work } from 'src/app/models/work.model';
   styleUrls: ['./work-confirm.component.scss']
 })
 export class WorkConfirmComponent implements OnInit {
-
+  confirmation: Subject<boolean> = new Subject();
   constructor(
     public dialogRef: MatDialogRef<WorkConfirmComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Work
@@ -20,7 +21,7 @@ export class WorkConfirmComponent implements OnInit {
     this.dialogRef.close();
   }
   onConfirm() {
-    this.data.isActive = false;
+    this.confirmation.next(true);
     this.dialogRef.close();
   }
 }

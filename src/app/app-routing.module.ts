@@ -1,13 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { WorksComponent } from './components/works/works.component';
-import { WorkComponent } from './components/work/work.component';
+import { WorkComponent } from './work/components/work/work.component';
+import { WorksComponent } from './work/components/works/works.component';
+
 
 const routes: Routes = [
-  {
-    path: '', component: WorksComponent
-  },
-  { path: 'work', component: WorkComponent }
+  { path: '', loadChildren: () => import('./work/work.module').then(m => m.WorkModule) }
 ];
 
 @NgModule({

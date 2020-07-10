@@ -1,11 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { WorkService } from 'src/app/services/work.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Work } from 'src/app/models/work.model';
 import { Router } from '@angular/router';
+import { Work } from '../../models/work.model';
+import { WorkService } from '../../services/work.service';
 
 @Component({
-  selector: 'app-new-work',
+  selector: 'app-work',
   templateUrl: './work.component.html',
   styleUrls: ['./work.component.scss'],
 })
@@ -36,8 +36,9 @@ export class WorkComponent implements OnInit {
       this.workService.addWork(this.workForm.value).subscribe(
         (data) => {
           console.log('POST Request is successful ', data);
-          this.router.navigate(['/']);
+          this.router.navigate(['/works']);
           alert('Work created');
+          this.workForm.reset();
         },
         (error) => {
           console.log('Error', error);
