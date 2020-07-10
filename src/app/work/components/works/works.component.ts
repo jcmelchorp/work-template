@@ -1,6 +1,8 @@
 import { Work } from './../../models/work.model';
 import { Component, OnInit, Output } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
+import * as workActions from '../../store/work.actions';
 @Component({
   selector: 'app-work-home',
   templateUrl: './works.component.html',
@@ -8,18 +10,18 @@ import { Observable } from 'rxjs';
 
 })
 export class WorksComponent implements OnInit {
-  works$: Observable<any>;
   worksListLoading$: Observable<boolean>;
   selectedWork$: Observable<Work>;
   selectedWork: Work;
-  @Output() id: number;
   works: Work[];
-  work: Work;
   constructor(
-
+    private store: Store<any>,
   ) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.store.dispatch(new workActions.LoadWorks());
+    this.store.subscribe((state) => { this.works = state.works.works; });
+  }
 
 
 

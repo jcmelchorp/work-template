@@ -1,7 +1,7 @@
 <div class="p-5">
   <mat-card>
-    <h2 *ngIf="works.length==0" class="text-cener">There are no works yet.</h2>
-    <table *ngIf="works.length!=0" mat-table [dataSource]="works" [class.mat-elevation-z8]="true">
+    <!-- <h2 *ngIf="works.length==0" class="text-cener">There are no works yet.</h2> -->
+    <table mat-table [dataSource]="works" [class.mat-elevation-z8]="true">
       <!-- Position Column -->
       <ng-container matColumnDef="id">
         <mat-header-cell *matHeaderCellDef>Id </mat-header-cell>
