@@ -12,12 +12,14 @@ import { WorkComponent } from './components/work/work.component';
 
 import { WorkService } from './services/work.service';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { WorkConfirmComponent } from './components/work-confirm/work-confirm.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     WorksComponent,
-    WorkComponent
+    WorkComponent,
+    WorkConfirmComponent
   ],
   imports: [
     BrowserModule,

@@ -13,7 +13,7 @@ import { catchError } from 'rxjs/operators';
 })
 export class WorkService {
   private SERVER_URL = 'http://localhost:3000';
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient) { }
 
   getWorks(): Observable<Work[]> {
     const url = `${this.SERVER_URL}/works`;
@@ -54,7 +54,7 @@ export class WorkService {
       .pipe(catchError(this.handleError));
   }
 
-  deleteWork(key: string): Observable<{}> {
+  deleteWork(key: number): Observable<{}> {
     const url = `${this.SERVER_URL}/works/${key}`;
     const httpHeaders = new HttpHeaders().set(
       'Content-Type',
